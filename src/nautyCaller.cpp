@@ -32,7 +32,7 @@ void nautyClassify(
     
     for (int i = 0; i < subgraphSize; i++) {
         lab[i] = i;
-        ptn[i] = 1;
+        ptn[i] = 0;
     }
     //ptn[subgraphSize - 1] = 0;
     
