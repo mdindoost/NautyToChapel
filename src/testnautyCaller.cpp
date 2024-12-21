@@ -15,14 +15,6 @@ int main() {
     graph nauty_g[MAXN * MAXM];
     graph canon[MAXN * MAXM];
     int lab[MAXN];
-    int orbits[MAXN] = {0};  // Initialize to zeros
-    int ptn[MAXN] = {0};     // Initialize to zeros
-    
-    // Prepare partitioning
-    for (int i = 0; i < subgraphSize - 1; i++) {
-        ptn[i] = 1;  // Set all but the last element to 1
-    }
-    // Last element naturally remains 0
     
     // Perform canonicalization
     nautyClassify(subgraph, subgraphSize, lab, nauty_g, canon);
@@ -31,12 +23,6 @@ int main() {
     std::cout << "Canonical Labeling:" << std::endl;
     for (int i = 0; i < subgraphSize; i++) {
         std::cout << i << " -> " << lab[i] << std::endl;
-    }
-    
-    // Print orbits
-    std::cout << "\nOrbits:" << std::endl;
-    for (int i = 0; i < subgraphSize; i++) {
-        std::cout << "Vertex " << i << ": Orbit " << orbits[i] << std::endl;
     }
     
     return 0;

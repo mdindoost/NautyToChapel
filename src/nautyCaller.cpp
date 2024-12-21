@@ -27,14 +27,14 @@ void nautyClassify(
     }
     
     // Prepare partitioning and labeling
-    int ptn[MAXN];
+    int ptn[MAXN] = {0};
     int orbits[MAXN];
     
     for (int i = 0; i < subgraphSize; i++) {
         lab[i] = i;
         ptn[i] = 1;
     }
-    ptn[subgraphSize - 1] = 0;
+    //ptn[subgraphSize - 1] = 0;
     
     // Nauty options
     DEFAULTOPTIONS_GRAPH(options);
@@ -43,7 +43,7 @@ void nautyClassify(
     options.defaultptn = TRUE;
 	options.digraph = TRUE;
 
-    statsblk stats;
+    statsblk(stats);
     
     // Perform canonicalization
     nauty_check(WORDSIZE, M, subgraphSize, NAUTYVERSIONID);
