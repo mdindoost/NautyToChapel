@@ -14,7 +14,7 @@ int main() {
     // Nauty data structures
     graph nauty_g[MAXN * MAXM];
     graph canon[MAXN * MAXM];
-    int lab[MAXN];
+    int lab[MAXN]={0};
     
     // Perform canonicalization
     nautyClassify(subgraph, subgraphSize, lab, nauty_g, canon);
