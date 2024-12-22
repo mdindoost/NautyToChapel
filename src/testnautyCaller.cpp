@@ -6,8 +6,8 @@ int main() {
     
     // Adjacency matrix: directed graph
     int subgraph[subgraphSize * subgraphSize] = {
-        0, 1, 0,  // Node 0 has edge to node 1
-        0, 0, 0,  // Node 1 has no edges
+        0, 0, 1,  // Node 0 has edge to node 1
+        1, 0, 0,  // Node 1 has no edges
         0, 1, 0   // Node 2 has edges to nodes 0 and 1
     };
     
@@ -24,6 +24,7 @@ int main() {
     for (int i = 0; i < subgraphSize; i++) {
         std::cout << i << " -> " << lab[i] << std::endl;
     }
-    
+
+
     return 0;
 }

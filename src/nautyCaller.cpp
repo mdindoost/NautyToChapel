@@ -23,6 +23,7 @@ void nautyClassify(
             // Check if edge exists in the subgraph
             if (subgraph[i * subgraphSize + j]) {
                 ADDELEMENT(gv, j);
+                std::cout << "Adding edge from " << i << " to " << j << std::endl;
             }
         }
     }
@@ -54,7 +55,12 @@ void nautyClassify(
     
     nauty(nauty_g, lab, ptn, NULL, orbits, &options, &stats, 
           workspace, 160*MAXM, M, subgraphSize, canon);
+
+	std::cout << "Partition array:" << std::endl;
     
+	for (int i = 0; i < subgraphSize; i++) {
+        std::cout << i << " -> " << ptn[i] << std::endl;
+    }
     //  delete [] lab;
     //  delete [] ptn	;
     //  delete [] orbits;
