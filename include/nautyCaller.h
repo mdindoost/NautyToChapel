@@ -12,12 +12,11 @@ extern "C" {
 typedef int vertex;
 
 // Function declaration for nauty classification
+// Now only takes subgraph, its size, and results array
 void nautyClassify(
     int* subgraph,        // Adjacency matrix as flat array
     int subgraphSize,     // Number of nodes
-    int* lab,             // Output canonical labeling
-    graph* nauty_g,       // Nauty graph representation
-    graph* canon          // Output canonical graph
+    int* results          // Output canonical labeling
 );
 
 #endif // NAUTY_CALLER_H

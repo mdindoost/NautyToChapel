@@ -11,18 +11,17 @@ int main() {
         0, 1, 0   // Node 2 has edges to nodes 1
     };
     
-    // Nauty data structures
-    graph nauty_g[MAXN * MAXM];
-    graph canon[MAXN * MAXM];
-    int lab[MAXN]={0};
+    // Allocate results array
+    int results[subgraphSize] = {-1};
     
     // Perform canonicalization
-    nautyClassify(subgraph, subgraphSize, lab, nauty_g, canon);
+    nautyClassify(subgraph, subgraphSize, results);
     
+    // Print canonical labeling
     // Print canonical labeling
     std::cout << "Canonical Labeling:" << std::endl;
     for (int i = 0; i < subgraphSize; i++) {
-        std::cout << i << " -> " << lab[i] << std::endl;
+        std::cout << "Node " << i << " -> " << results[i] << std::endl;
     }
 
 

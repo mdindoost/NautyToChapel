@@ -5,13 +5,32 @@
 void nautyClassify(
     int* subgraph,        // Adjacency matrix as flat array
     int subgraphSize,     // Number of nodes
-    int* lab,             // Output canonical labeling
-    graph* nauty_g,       // Nauty graph representation
-    graph* canon          // Output canonical graph
+    int* results          // Output canonical labeling
 ) {
+
+    // Ensure subgraphSize does not exceed MAXN
+    if (subgraphSize > MAXN) {
+        std::cerr << "Error: subgraphSize exceeds MAXN (" << MAXN << ")" << std::endl;
+        return;
+    }
+
     // Calculate number of words needed to represent the graph
     int M = (subgraphSize + WORDSIZE - 1) / WORDSIZE;
-    
+
+    // Allocate memory for Nauty data structures
+    graph nauty_g[MAXN * MAXM];
+    graph canon[MAXN * MAXM];
+    int lab[MAXN];
+    int ptn[MAXN];
+    int orbits[MAXN];
+    setword workspace[160 * MAXM];
+
+    // Initialize lab and ptn
+    for (int i = 0; i < subgraphSize; i++) {
+        lab[i] = i;
+        ptn[i] = 0;
+    }
+
     // Clear Nauty graph representation
     for (int i = 0; i < subgraphSize; i++) {
         set* gv = GRAPHROW(nauty_g, i, M);
@@ -27,42 +46,35 @@ void nautyClassify(
             }
         }
     }
-    
-    // Prepare partitioning and labeling
-    int ptn[MAXN] = {0};
-    int orbits[MAXN];
-    
-    for (int i = 0; i < subgraphSize; i++) {
-        lab[i] = i;
-        ptn[i] = 0;
-    }
-    //ptn[subgraphSize - 1] = 0;
-    
+
     // Nauty options
-    static DEFAULTOPTIONS_GRAPH(options);
+    DEFAULTOPTIONS_GRAPH(options);
     options.writeautoms = FALSE;
     options.getcanon = TRUE;
     options.defaultptn = TRUE;
-	options.digraph = TRUE;
+    options.digraph = TRUE; // Set to TRUE for directed graphs; FALSE for undirected
 
     statsblk(stats);
-    setword workspace[160*MAXM];
 
-    // Perform canonicalization
+
+    // Perform check
     nauty_check(WORDSIZE, M, subgraphSize, NAUTYVERSIONID);
 
     std::cout << "nauty_check. PASSED!" << std::endl;
     
     nauty(nauty_g, lab, ptn, NULL, orbits, &options, &stats, 
           workspace, 160*MAXM, M, subgraphSize, canon);
+    
+    // Populate the results array with canonical labeling
+	std::cout << "results array:" << std::endl;
+    for (int i = 0; i < subgraphSize; i++) {
+        results[i] = lab[i];
+        std::cout << i << " -> " << results[i] << std::endl;
+    }
 
 	std::cout << "Partition array:" << std::endl;
-    
 	for (int i = 0; i < subgraphSize; i++) {
         std::cout << i << " -> " << ptn[i] << std::endl;
     }
-    //  delete [] lab;
-    //  delete [] ptn	;
-    //  delete [] orbits;
-	//  delete [] nauty_g;
+
 }
