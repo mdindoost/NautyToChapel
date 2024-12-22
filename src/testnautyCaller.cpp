@@ -18,7 +18,6 @@ int main() {
     nautyClassify(subgraph, subgraphSize, results);
     
     // Print canonical labeling
-    // Print canonical labeling
     std::cout << "Canonical Labeling:" << std::endl;
     for (int i = 0; i < subgraphSize; i++) {
         std::cout << "Node " << i << " -> " << results[i] << std::endl;
