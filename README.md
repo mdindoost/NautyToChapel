@@ -70,7 +70,7 @@ Clone the NautyToChapel repository to your local machine:
 ```bash
 git clone https://github.com/mdindoost/NautyToChapel.git
 cd NautyToChapel/NautyProject
-
+```
 Usage
 Function Interface
 The nautyClassify function provides a simplified interface for canonicalizing graphs. It encapsulates all necessary memory allocations and deallocations internally.
