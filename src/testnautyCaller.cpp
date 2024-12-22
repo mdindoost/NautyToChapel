@@ -8,7 +8,7 @@ int main() {
     int subgraph[subgraphSize * subgraphSize] = {
         0, 1, 0,  // Node 0 has edge to node 1
         0, 0, 0,  // Node 1 has no edges
-        1, 1, 0   // Node 2 has edges to nodes 0 and 1
+        0, 1, 0   // Node 2 has edges to nodes 0 and 1
     };
     
     // Nauty data structures

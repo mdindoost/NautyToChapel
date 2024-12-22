@@ -1,5 +1,6 @@
 #include "../include/nautyCaller.h"
 #include <cstring>
+#include <iostream>
 
 void nautyClassify(
     int* subgraph,        // Adjacency matrix as flat array
@@ -37,16 +38,25 @@ void nautyClassify(
     //ptn[subgraphSize - 1] = 0;
     
     // Nauty options
-    DEFAULTOPTIONS_GRAPH(options);
+    static DEFAULTOPTIONS_GRAPH(options);
     options.writeautoms = FALSE;
     options.getcanon = TRUE;
     options.defaultptn = TRUE;
 	options.digraph = TRUE;
 
     statsblk(stats);
-    
+    setword workspace[160*MAXM];
+
     // Perform canonicalization
     nauty_check(WORDSIZE, M, subgraphSize, NAUTYVERSIONID);
+
+    std::cout << "nauty_check. PASSED!" << std::endl;
+    
     nauty(nauty_g, lab, ptn, NULL, orbits, &options, &stats, 
-          NULL, 160*M, M, subgraphSize, canon);
+          workspace, 160*MAXM, M, subgraphSize, canon);
+    
+    //  delete [] lab;
+    //  delete [] ptn	;
+    //  delete [] orbits;
+	//  delete [] nauty_g;
 }
