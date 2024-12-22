@@ -71,18 +71,20 @@ Clone the NautyToChapel repository to your local machine:
 git clone https://github.com/mdindoost/NautyToChapel.git
 cd NautyToChapel/NautyProject
 ```
-Usage
+## Usage
 Function Interface
 The nautyClassify function provides a simplified interface for canonicalizing graphs. It encapsulates all necessary memory allocations and deallocations internally.
 
-Function Signature:
+## Function Signature:
 
+```bash
 
 void nautyClassify(
     int* subgraph,        // Adjacency matrix as flat array
     int subgraphSize,     // Number of nodes
     int* results          // Output canonical labeling
 );
+```
 Parameters:
 subgraph: A flattened adjacency matrix representing the graph.
 subgraphSize: The number of nodes in the graph.
@@ -103,7 +105,7 @@ git clone https://github.com/mdindoost/NautyToChapel.git
 cd NautyToChapel/NautyProject
 Create a New Branch:
 
-bash
+```bash
 
 git checkout -b feature/your-feature-name
 Make Your Changes:
