@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/nautyCaller.h"
+#include "nautyClassify.h"
 
 int main() {
     const int subgraphSize = 3;

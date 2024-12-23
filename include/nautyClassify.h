@@ -1,5 +1,5 @@
-#ifndef NAUTY_CALLER_H
-#define NAUTY_CALLER_H
+#ifndef NAUTY_CLASSIFY_H
+#define NAUTY_CLASSIFY_H
 
 extern "C" {
     #include <nauty.h>
@@ -19,4 +19,4 @@ void nautyClassify(
     int* results          // Output canonical labeling
 );
 
-#endif // NAUTY_CALLER_H
+#endif // NAUTY_CLASSIFY_H

@@ -1,11 +1,11 @@
 CPP=g++ 
-INCLUDE=-I./include -I/usr/include/nauty
+INCLUDE=-I./include -I/usr/include/nautylibrary
 LIBS=
 CPPFLAGS=-g -O3 -w $(INCLUDE) $(LIBS)
-PROGRAM=nautyTest
+PROGRAM=testnautyClassify
 
-SRC=src/nautyCaller.cpp\
-    src/testnautyCaller.cpp
+SRC=src/nautyClassify.cpp\
+    src/testnautyClassify.cpp
 
 NAUTY = nautylibrary/nauty.o\
         nautylibrary/naugraph.o\

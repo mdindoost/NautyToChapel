@@ -1,4 +1,4 @@
-#include "../include/nautyCaller.h"
+#include "nautyClassify.h"
 #include <cstring>
 #include <iostream>
 
