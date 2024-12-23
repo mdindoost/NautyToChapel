@@ -5,7 +5,8 @@
 void nautyClassify(
     int* subgraph,        // Adjacency matrix as flat array
     int subgraphSize,     // Number of nodes
-    int* results          // Output canonical labeling
+    int* results,         // Output canonical labeling
+    int performCheck      // Flag to perform nauty_check (1 to perform, 0 to skip)
 ) {
 
     // Ensure subgraphSize does not exceed MAXN
@@ -57,11 +58,14 @@ void nautyClassify(
     statsblk(stats);
 
 
-    // Perform check
-    nauty_check(WORDSIZE, M, subgraphSize, NAUTYVERSIONID);
+    // Conditionally perform nauty_check
+    if (performCheck == 1) {
+        nauty_check(WORDSIZE, M, subgraphSize, NAUTYVERSIONID);
+        std::cout << "nauty_check. PASSED!" << std::endl;
+    } else {
+        std::cout << "Skipping nauty_check as performCheck is not set to 1." << std::endl;
+    }
 
-    std::cout << "nauty_check. PASSED!" << std::endl;
-    
     nauty(nauty_g, lab, ptn, NULL, orbits, &options, &stats, 
           workspace, 160*MAXM, M, subgraphSize, canon);
     
