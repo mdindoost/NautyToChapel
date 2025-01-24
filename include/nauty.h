@@ -729,8 +729,8 @@ typedef struct
     void    (*freedyn)(void); /* free dynamic memory */
     void    (*check)          /* check compilation parameters */
             (int,int,int,int);
-    void    (*dv_spare1)();
-    void    (*dv_spare2)();
+    void    (*dv_spare1)(void);
+    void    (*dv_spare2)(void);
 } dispatchvec;
 
 typedef struct
