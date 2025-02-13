@@ -22,7 +22,7 @@ int64_t nautyClassify(
 
     if (subgraphSize > MAXN) {
         std::cerr << "Error: subgraphSize exceeds MAXN (" << MAXN << ")" << std::endl;
-        return -1;
+        return -2;
     }
 
     if (verbose) {
@@ -60,7 +60,7 @@ int64_t nautyClassify(
     // Test 2: Memory bounds check
     if (M > MAXM) {
         std::cerr << "Error: Required words (" << M << ") exceeds MAXM (" << MAXM << ")" << std::endl;
-        return -1;
+        return -3;
     }
 
     graph nauty_g[MAXN * MAXM];
@@ -133,11 +133,11 @@ int64_t nautyClassify(
     for(int i = 0; i < subgraphSize; i++) {
         if(lab[i] < 0 || lab[i] >= subgraphSize) {
             std::cerr << "Error: Invalid label at position " << i << ": " << lab[i] << std::endl;
-            return -1;
+            return -4;
         }
         if(used[lab[i]]) {
             std::cerr << "Error: Duplicate label found: " << lab[i] << std::endl;
-            return -1;
+            return -5;
         }
         used[lab[i]] = true;
         if (verbose) std::cout << "Position " << i << " -> label " << lab[i] << " (valid)" << std::endl;
