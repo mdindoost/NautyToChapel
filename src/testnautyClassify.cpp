@@ -126,7 +126,7 @@ int main() {
         nautyClassify(subgraph, size, results, 0, 1);
         
         std::cout << "\nComparison of results:" << std::endl;
-        std::cout << "Position | Working Code | Your Code" << std::endl;
+        std::cout << "Position | Working Code | My Code" << std::endl;
         std::cout << "---------|--------------|----------" << std::endl;
         for(int i = 0; i < size; i++) {
             std::cout << "    " << i << "    |      " << 
