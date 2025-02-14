@@ -59,7 +59,7 @@ int64_t nautyClassify(
 
     // Test 2: Memory bounds check
     if (M > MAXM) {
-        std::cerr << "Error: Required words (" << M << ") exceeds MAXM (" << MAXM << ")" << std::endl;
+        std::cerr << "C Error: Required words (" << M << ") exceeds MAXM (" << MAXM << ")" << std::endl;
         return -3;
     }
 
@@ -132,11 +132,11 @@ int64_t nautyClassify(
     bool used[MAXN] = {false};
     for(int i = 0; i < subgraphSize; i++) {
         if(lab[i] < 0 || lab[i] >= subgraphSize) {
-            std::cerr << "Error: Invalid label at position " << i << ": " << lab[i] << std::endl;
+            std::cerr << "C Error: Invalid label at position " << i << ": " << lab[i] << std::endl;
             return -4;
         }
         if(used[lab[i]]) {
-            std::cerr << "Error: Duplicate label found: " << lab[i] << std::endl;
+            std::cerr << "C Error: Duplicate label found: " << lab[i] << std::endl;
             return -5;
         }
         used[lab[i]] = true;
